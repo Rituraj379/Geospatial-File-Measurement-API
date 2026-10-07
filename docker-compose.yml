@@ -1,0 +1,48 @@
+version: "3.9"
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runtime
+    image: geospatial-api:latest
+    container_name: geospatial-api
+    ports:
+      - "8000:8000"
+    environment:
+      - APP_NAME=Geospatial File Measurement API
+      - ENVIRONMENT=production
+      - MAX_FILE_SIZE_MB=50
+      - DATA_DIR=/app/data
+    volumes:
+      # Persist processed file metadata between container restarts
+      - geospatial_data:/app/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+
+  # ---------------------------------------------------------------------------
+  # Optional: PostgreSQL + PostGIS (disabled by default for the initial version)
+  # Uncomment the service below and update app config to enable DB-backed storage.
+  # ---------------------------------------------------------------------------
+  # db:
+  #   image: postgis/postgis:16-3.4
+  #   container_name: geospatial-db
+  #   environment:
+  #     POSTGRES_USER: geoapi
+  #     POSTGRES_PASSWORD: geoapi_secret
+  #     POSTGRES_DB: geospatial
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+  #   ports:
+  #     - "5432:5432"
+  #   restart: unless-stopped
+
+volumes:
+  geospatial_data:
+  # postgres_data:

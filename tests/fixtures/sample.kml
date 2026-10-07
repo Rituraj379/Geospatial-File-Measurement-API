@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Sample Geospatial Fixtures</name>
+
+    <!-- Polygon: approximate 1km × 1km square near Kolkata, India -->
+    <Placemark>
+      <name>Sample Polygon</name>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <coordinates>
+              88.3639,22.5726,0
+              88.3729,22.5726,0
+              88.3729,22.5816,0
+              88.3639,22.5816,0
+              88.3639,22.5726,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+
+    <!-- LineString: ~1 km horizontal line -->
+    <Placemark>
+      <name>Sample LineString</name>
+      <LineString>
+        <coordinates>
+          88.3639,22.5726,0
+          88.3729,22.5726,0
+        </coordinates>
+      </LineString>
+    </Placemark>
+
+    <!-- Point -->
+    <Placemark>
+      <name>Sample Point</name>
+      <Point>
+        <coordinates>88.3639,22.5726,0</coordinates>
+      </Point>
+    </Placemark>
+
+  </Document>
+</kml>
