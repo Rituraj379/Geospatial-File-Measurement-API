@@ -12,7 +12,7 @@ Copy-Item .env.example .env
 python -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
 ```
 
-The `.env` file is optional. It can configure `MAX_FILE_SIZE_MB`, `MAX_UNCOMPRESSED_SIZE_MB`, `MAX_ZIP_ENTRIES`, and `DATA_DIR`. Defaults are 50 MB per upload, 200 MB extracted per ZIP, and 10,000 ZIP entries.
+The `.env` file is  optional. It can configure `MAX_FILE_SIZE_MB`, `MAX_UNCOMPRESSED_SIZE_MB`, `MAX_ZIP_ENTRIES`, and `DATA_DIR`. Defaults are 50 MB per upload, 200 MB extracted per ZIP, and 10,000 ZIP entries.
 
 Open [http://localhost:8000/docs](http://localhost:8000/docs) for interactive API docs. Run the tests with `python -m pytest -q`.
 
